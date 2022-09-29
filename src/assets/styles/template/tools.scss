@@ -1,0 +1,47 @@
+ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: #000;
+}
+p, h1, h2, h3, h4, h5, h6{
+  margin: 0;
+  padding: 0;
+}
+button{
+  margin: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+.row{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.col-2{
+  width: 16.67%;
+}
+.col-4{
+  width: 33.34%;
+}
+.col-6{
+  width: 50%;
+}
+.col-8{
+  width: 66.66%;
+}
+.col-10{
+  width: 83.33%;
+}
+.col-12{
+  width: 100%;
+}
+
+.mb-10{
+  margin-bottom: 10px;
+}
