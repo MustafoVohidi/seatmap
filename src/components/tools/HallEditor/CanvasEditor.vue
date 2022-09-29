@@ -874,6 +874,22 @@ export default {
       }
     });
 
+    let ceateSector = {
+      entrance: 0,
+      entranceValue: 0,
+      figure: 3,
+      groupped: false,
+      position: 1,
+      positionObject: 0,
+      qtyRow: 10,
+      qtySeats: 10,
+      radius: 0,
+      row: 10,
+      seat: 10,
+      sectorValue: 1,
+    };
+    let rectangleSecto1 = useCreateRectangle(ceateSector);
+
     // HOOK MOUNTED
     onMounted(() => {
       // let instance = getCurrentInstance().ctx.$forceUpdate(HALL => HALL);
@@ -987,6 +1003,7 @@ export default {
 
       oCoordinate();
 
+
       // Для отрисолвки прямоугольника
       // начало точки
       if (true) {
@@ -1024,75 +1041,22 @@ export default {
         //   });
         // }
 
-        // canvas.on("mouse:move", (e) => {
-        //   console.log(e, "mouse:move");
-        //   widthRect = e.pointer.x - coordX;
-        //   heightRect = e.pointer.y - coordY;
-        //   rectDrag.set("width", widthRect).setCoords();
-        //   rectDrag.set("height", heightRect).setCoords();
-        //   rectDrag.set("fill", "#af0");
-        //   rectDrag.set("text", widthRect + " " + heightRect);
-        //   // createRect = false
-        // });
-
-        canvas.on("mouse:up ", (e) => {
-          console.log(e, "mouse:up");
+        canvas.on("mouse:up", (e) => {
+          console.log(coordX, e.pointer.x, coordY, "mouse:up");
           widthRect = e.pointer.x - coordX;
           heightRect = e.pointer.y - coordY;
           rectDrag.set("width", widthRect).setCoords();
           rectDrag.set("height", heightRect).setCoords();
           rectDrag.set("fill", "#000");
-          // createRect = false
+          rectDrag.set("fontSize", "80px");
+          rectDrag.set("text", widthRect + " " + heightRect);
+          createGroupedSector(rectangleSecto1);
         });
       }
 
       // конец точки
     });
     onUpdated(() => {
-      //      // Для отрисолвки прямоугольника
-      //   // начало точки
-      //   if (true) {
-      //     const rectDrag = new Seat({
-      //       top: 0,
-      //       left: 0,
-      //       width: 0,
-      //       height: 0,
-      //       fill: "#af0",
-      //     });
-      //     canvas.add(rectDrag);
-      //     let coordX = 0,
-      //       coordY = 0,
-      //       widthRect = 0,
-      //       heightRect = 0;
-      //     let isMove = false;
-      //     canvas.on({
-      //       "mouse:down": (e) => {
-      //         console.log(coordX, coordY, "mouse:down");
-      //         coordX = e.pointer.x;
-      //         coordY = e.pointer.y;
-      //         rectDrag.set("top", coordY).setCoords();
-      //         rectDrag.set("left", coordX).setCoords();
-      //         isMove=true
-      //       },
-      //     });
-      //     if (isMove) {
-      //       canvas.on({
-      //         "mouse:move": (e) => {
-      //           console.log(coordX, e.pointer.x, coordY, "mouse:move");
-      //           widthRect = e.pointer.x - coordX;
-      //           heightRect = e.pointer.y - coordY;
-      //           rectDrag.set("width", widthRect).setCoords();
-      //           rectDrag.set("height", heightRect).setCoords();
-      //           rectDrag.set("fill", "#af0");
-      //           rectDrag.set("fontSize", "80px");
-      //           rectDrag.set("text", widthRect + " " + heightRect);
-      //         },
-      //       });
-      //     }
-      //   }
-
-      //   // конец точки
-
       if (newSector.value) {
         switch (dataBlock.value.figure) {
           case 1:
@@ -1121,7 +1085,10 @@ export default {
         // createGroupedSector(createSectorData)
         // console.log(circleSector)
       }
+
       falseNewSector();
+
+      
     });
     return {
       ctx,
