@@ -17,4 +17,5 @@ export interface Seat {
   typeElement: string;
   sectorId: number;
   angle:number;
+  row:number;
 }

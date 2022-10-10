@@ -1,7 +1,8 @@
-import { createStore } from "vuex";
 import { Seat } from "@/interface/seat";
+import { Commit } from "vuex";
 export const canvasModule = {
   state: () => ({
+    hookUpdate: 0,
     arrowRight: 0,
     arrowLeft: 0,
     arrowDown: 0,
@@ -175,6 +176,21 @@ export const canvasModule = {
       //   },
     ],
     createSector: {},
+    createSectorDraw: {
+      entrance: 0,
+      entranceValue: 0,
+      figure: "3",
+      groupped: false,
+      position: 1,
+      positionObject: 0,
+      qtyRow: 5,
+      qtySeats: 5,
+      radius: 0,
+      rotate: 0,
+      row: 5,
+      seat: 5,
+      sectorValue: 0,
+    },
     testNumber: 20,
     initialSeat: {
       rotation: 0,
@@ -209,212 +225,19 @@ export const canvasModule = {
       initialSeat: 0,
       seats: [],
     },
-    hookUpdate: 0,
     angleGroup: 0,
     groupedBlocks: [],
     newSector: false,
+    selectDraw: false,
     // begin hall
     hall: {
       width: 1000,
       height: 1500,
       id: 0,
       title: "Абономентная компания",
-      sectors: [
-        // {
-        //   width: 1000,
-        //   height: 500,
-        //   x: 0,
-        //   y: 0,
-        //   rotate: 0,
-        //   rows: [1, 2, 3, 4],
-        //   title: "Бельэтаж",
-        //   seats: [
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //     {
-        //       id: 0,
-        //       number: 1,
-        //       color: "#000",
-        //       background: "#fff",
-        //       borderColor: "#000",
-        //       status: "K",
-        //       x: 0,
-        //       y: 0,
-        //     },
-        //   ],
-        // },
-      ],
+      sectors: [],
     },
     // end hall
-
     dataBlock: {},
   }),
   getters: {
@@ -475,15 +298,13 @@ export const canvasModule = {
         // console.log(state.hall.sectors);
       }
     },
-    deleteBlock(state: any, block: any) {
-    },
+    deleteBlock(state: any, block: any) {},
     createBlock(state: any, block: any) {
       // console.log(block);
       state.hookUpdate++;
       state.newSector = true;
       state.dataBlock = block;
       state.stateSectorId++;
-      
       // добавляет данные в массви HALL (delete)
       let initialRow = block.row;
       let initialSeat = block.seat;
@@ -543,6 +364,7 @@ export const canvasModule = {
             strokeWidth: 1,
             number: initialSeat != 0 ? initialSeat + s : initialSeat + s + 1,
             id: s + 1,
+            row: r,
             typeElement: "seat",
             angle: (angle * 180) / Math.PI,
             sectorId: state.stateSectorId,
@@ -565,11 +387,9 @@ export const canvasModule = {
       state.initialBlock.initialRow = block.row;
       state.initialBlock.initialSeat = block.seat;
       state.initialBlock.seats = allSeats;
-
       state.createSector = state.initialBlock;
       state.hall.sectors.push(state.initialBlock);
       state.initialBlock = [];
-
       // console.log(state.dataBlock, "canvas hall");
     },
 
@@ -581,8 +401,28 @@ export const canvasModule = {
       // console.log(state.arrowUp);
       return state.arrowUp++;
     },
+    changeCreateSectorDraw(state: any, text: any) {
+      console.log(state.createSectorDraw, text, "state");
+      // state.createSectorDraw=text
+      // state.hookUpdate++;
+    },
+    changeSelectDraw(state: any) {
+      state.selectDraw = !state.selectDraw;
+      state.hookUpdate++;
+      // console.log(state.selectDraw, "selectDraw")
+    },
   },
-  actions: {},
+  actions: {
+    changeCreateSectorDrawAction(
+      { commit, state }: { commit: Commit; state: any },
+      data: any
+    ) {
+      // state.createSectorDraw
+      console.log(state.createSectorDraw, "action", data);
+      // console.log( state)
+      // commit("changeSelectDraw")
+    },
+  },
   modules: {},
   namespaced: true,
 };

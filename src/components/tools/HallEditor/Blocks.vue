@@ -1,11 +1,90 @@
 <template>
-  <h3 class="title-content">Создание блока</h3>
+  <h3 class="title-content">Создать блок</h3>
   <div class="sector-r-c">
     <div class="row">
       <div class="col-12 mb-10">
+        <div class="create-figure">
+          <select name="figure" id="figure" class="select" v-model="figure">
+            <option value="1">Круг</option>
+            <option value="2">Кольцо</option>
+            <option value="3">Прямоугольник</option>
+            <option value="4">Трапеция</option>
+            <option value="5">Треугольник</option>
+            <option value="6">Полилиния</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="figure==1" class="row circle">
+      <!-- <div class="col-12 mb-10">
         <div class="input-group">
           <label>Кол-во рядов:</label>
           <input type="number" min="0" v-model="qtyRows" />
+        </div>
+      </div> -->
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>№ ряда</label>
+          <input type="number" min="0" v-model="rows" v-focus />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во мест:</label>
+          <input type="number" min="0" v-model="qtySeats" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>№ места</label>
+          <input type="number" min="0" v-model="seats" />
+        </div>
+      </div>
+    </div>
+    <div v-if="figure==2" class="row ring">
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во рядов:</label>
+          <input type="number" min="0" v-model="qtyRows" v-focus />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>№ ряда</label>
+          <input type="number" min="0" v-model="rows" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во мест (первого ряда):</label>
+          <input type="number" min="0" v-model="qtySeatsFirstRow" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во мест (последнего ряда):</label>
+          <input type="number" min="0" v-model="qtySeats" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>№ места</label>
+          <input type="number" min="0" v-model="seats" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Угол среза</label>
+          <input type="number" min="0" v-model="cuttingAngle" />
+        </div>
+      </div>
+    </div>
+    <div v-if="figure==3" class="row rectangle">
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во рядов:</label>
+          <input type="number" min="0" v-model="qtyRows" v-focus />
         </div>
       </div>
       <div class="col-12 mb-10">
@@ -27,19 +106,112 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div v-if="figure==4" class="row trapezoid">
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во рядов:</label>
+          <input type="number" min="0" v-model="qtyRows" v-focus />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>№ ряда</label>
+          <input type="number" min="0" v-model="rows" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во мест (первого ряда):</label>
+          <input type="number" min="0" v-model="qtySeatsFirstRow" />
+        </div>
+      </div>
+
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во мест (последнего ряда):</label>
+          <input type="number" min="0" v-model="qtySeats" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>№ места</label>
+          <input type="number" min="0" v-model="seats" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="button-group">
+          <button class="btn button-sm" :class="{'active':kindOfFigures==1}" @click="kindOfFigures=1">Прямой</button>
+          <button class="btn button-sm" :class="{'active':kindOfFigures==2}"
+            @click="kindOfFigures=2">Равнобедренный</button>
+        </div>
+      </div>
+    </div>
+    <div v-if="figure==5" class="row triangle">
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во рядов:</label>
+          <input type="number" min="0" v-model="qtyRows" v-focus />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>№ ряда</label>
+          <input type="number" min="0" v-model="rows" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во мест:</label>
+          <input type="number" min="0" v-model="qtySeats" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>№ места</label>
+          <input type="number" min="0" v-model="seats" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="button-group">
+          <button class="btn button-sm" :class="{'active':kindOfFigures==1}" @click="kindOfFigures=1">Прямой</button>
+          <button class="btn button-sm" :class="{'active':kindOfFigures==2}"
+            @click="kindOfFigures=2">Равнобедренный</button>
+        </div>
+      </div>
+    </div>
+    <div v-if="figure==6" class="row polyline">
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во рядов:</label>
+          <input type="number" min="0" v-model="qtyRows" v-focus />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>№ ряда</label>
+          <input type="number" min="0" v-model="rows" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>Кол-во мест:</label>
+          <input type="number" min="0" v-model="qtySeats" />
+        </div>
+      </div>
+      <div class="col-12 mb-10">
+        <div class="input-group">
+          <label>№ места</label>
+          <input type="number" min="0" v-model="seats" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row" v-if="figure==6">
       <div class="recently">
         <!-- <button type="button" @click="unequalRanks">Недавные ряды</button> -->
       </div>
     </div>
-    <div class="row mb-10">
-      <div class="col-12">
-        <div class="input-form-checkbox">
-          <input type="checkbox" class="" id="groupped" v-model="groupped" />
-          <label for="groupped">Сгруппировать</label>
-        </div>
-      </div>
-    </div>
+
     <div class="row mb-10">
       <div class="col-10">
         <div class="input-group">
@@ -119,17 +291,11 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12 mb-10">
-        <div class="create-figure">
-          <select name="figure" id="figure" class="select" v-model="figure">
-            <option value="1">Круг</option>
-            <!-- <option value="2">Кольцо</option> -->
-            <option value="3">Прямоугольник</option>
-            <!-- <option value="4">Трапеция</option>
-            <option value="5">Треугольник</option>
-            <option value="6">Полилиния</option> -->
-          </select>
+    <div class="row mb-10">
+      <div class="col-12">
+        <div class="input-form-checkbox">
+          <input type="checkbox" class="" id="groupped" v-model="groupped" />
+          <label for="groupped">Сгруппировать</label>
         </div>
       </div>
     </div>
@@ -164,9 +330,9 @@ export default {
         { id: 3, name: "От центра окружности", value: "3" },
       ],
       rows: 0,
-      qtyRows: 0,
+      qtyRows: 4,
       seats: 0,
-      qtySeats: 0,
+      qtySeats: 10,
       sectorValue: 0,
       entranceValue: 0,
       entrance: 0,
@@ -175,8 +341,10 @@ export default {
       positionObject: 0,
       isctivePosition: 1,
       groupped: false,
-      figure:1,
-      // asdasdasd: 0,
+      figure: 4,
+      kindOfFigures: 1,
+      qtySeatsFirstRow: 4,
+      cuttingAngle:0,
     }
   },
   components: {
@@ -195,21 +363,7 @@ export default {
       this.isctivePosition = number
     },
     newBlock() {
-      let block = {
-        // row: 5,
-        // qtyRow: 10,
-        // seat: 2,
-        // qtySeats: 20,
-        // sectorValue: 0,
-        // entranceValue: 0,
-        // entrance: 0,
-        // rotate: 0,
-        // radius: 0,
-        // positionObject: 0,
-        // isctivePosition: 0,
-        // groupped: false,
-        // asdasdasd: 0,
-      }
+      let block = {}
       block.row = this.rows
       block.qtyRow = this.qtyRows
       block.seat = this.seats
@@ -223,7 +377,10 @@ export default {
       block.position = this.isctivePosition
       block.groupped = this.groupped
       block.qtySeats = this.qtySeats
-      block.figure=this.figure
+      block.figure = Number(this.figure)
+      block.kindOfFigures = this.kindOfFigures
+      block.qtySeatsFirstRow = this.qtySeatsFirstRow
+      block.cuttingAngle=this.cuttingAngle
       this.rows = 0
       this.qtyRows = 0
       this.seats = 0
@@ -237,7 +394,10 @@ export default {
       this.isctivePosition = 1
       this.groupped = false
       this.qtySeats = 0
-      this.figure=1
+      this.figure = 4
+      this.kindOfFigures = 1
+      this.qtySeatsFirstRow = 0;
+      this.cuttingAngle=0
       console.log(block)
       return block;
     },
