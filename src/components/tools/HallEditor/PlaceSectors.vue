@@ -85,17 +85,5 @@ export default {
 }
 </script>
 <style lang="scss">
-    .btn-input{
-        display: flex;
-        align-items: center;
-        input{
-            width: auto;
-        }
-        button{
-            padding: 5px 7px;
-            box-sizing: border-box;
-            border: 1px solid;
-            margin-left: 5px;
-        }
-    }
+ 
 </style>

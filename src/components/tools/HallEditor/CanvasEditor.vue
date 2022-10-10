@@ -1347,44 +1347,4 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.canvas-editor {
-    background: #fff;
-    border: 1px solid;
-}
-
-.canvas {
-    position: relative;
-}
-
-.tools {
-    // display: flex;
-    // align-items: baseline;
-    padding: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid;
-    position: fixed;
-    right: 0;
-    height: 100%;
-    background: #fff;
-    z-index: 9999;
-
-    button {
-        padding: 10px;
-        margin-right: 10px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #000;
-            color: #fff;
-        }
-    }
-}
-
-.d-item {
-    margin-bottom: 10px;
-}
-
-.angle-group {
-    //   width: 100%;
-}
 </style>

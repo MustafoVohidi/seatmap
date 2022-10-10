@@ -93,22 +93,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.button-group {
-    button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-        min-height: 30px;
-        border: 1px solid;
-    }
 
-    .add-price {}
-
-    .remove-price {}
-
-    .save-price {}
-}
 </style>

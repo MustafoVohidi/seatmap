@@ -203,29 +203,5 @@
   };
   </script>
   <style lang="scss">
-  .tools-element {
-    display: flex;
-    align-items: flex-start;
-    .m-tool-item {
-      margin: 0 5px;
-      button {
-        color: #fff;
-        border: 1px;
-        padding: 5px 10px;
-        box-sizing: border-box;
-        &.active {
-          background: #1c74bd;
-          border-color: #1c74bd;
-          transform: all 0.3s;
-        }
-        .icon {
-          font-size: 2rem;
-        }
-        span{
-          font-size:12px;
-          display:block;
-        }
-      }
-    }
-  }
+
   </style>
